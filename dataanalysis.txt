@@ -1,0 +1,140 @@
+import numpy as np
+a=np.arange(15).reshape(3,5)
+print("######## array values ###############")
+print(a)
+print("############ array shape #################")
+print(a.shape)
+print("############## data type ################")
+print(a.dtype.name)
+print("###################### size ###########")
+print(a.size)
+print("############ type #############")
+print(type(a))
+b=np.array([6,7,8])
+print("################### array value")
+print(b[1])
+print(b)
+print(b.size)
+print(type(b))
+
+print("######################## transpose ###############")
+x= np.transpose(a)
+
+
+print(x)
+
+
+
+
+
+
+# import pandas as pd
+# df=pd.DataFrame( {
+    
+#     "Name":["Peter San","Edgar Mathew"],
+#     "Age":[23,34],
+#     "Address":["23 old baker street","59 new street"]
+#     })
+# print(df)
+
+# import pandas as pd
+# df=pd.read_csv('data.csv')
+# print(df)
+# res=df.describe()
+# print("######################")
+# print(type(res))
+# print("#####################3")
+# print(df.head(10))
+# print("#############################")
+# print((df.info()))
+# print("########################")
+# print(df["Duration"].shape)
+
+
+#########################################################################################################################
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+df=pd.read_csv("data.csv")
+print(df)
+print("##################### describe data ################")
+res=df.describe()
+print(df.info())
+print("########################## head ########################")
+print(df.head(10))
+print("###################### tail ################3")
+print(df.tail(10))
+print("################ Max over single column ##########")
+print(df["Pulse"].max())
+print("######################## view all data types ###############3")
+print(df.dtypes)
+print("########## conditional analysis ###########")
+#df.plot()
+#df.plot.scatter(x="Duration",y="Calories",alpha=0.5)
+#df.plot.box()
+#fig=df.plot.area(figsize=(12,4),subplots=True)
+# fig,axs=plt.subplots(figsize=(12,4))
+# df.plot.area(ax=axs)
+# axs.set_ylabel("Calories")
+# axs.set_xlabel("Duration")
+# fig.savefig("myplot.png")
+print(df["Calories"].mean())
+print(df["Duration"].median())
+
+aggres=df.agg({
+        "Duration":["min","max","median","skew"],
+        "Calories":["min","max","median","skew"]
+        
+        })
+print(aggres)
+
+
+groupbyres =df[["Duration","Calories"]].groupby("Duration").mean()
+print(groupbyres)
+
+durationgroupby=df.groupby("Duration").mean()
+print(durationgroupby)
+
+
+sortres=df.sort_values(by=["Pulse","Maxpulse"],ascending=False)
+print(sortres)
+
+
+pivotres=df.pivot_table(values="Calories",index="Duration",columns="Pulse",aggfunc="median")
+print(pivotres)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# arr=np.array([12,23,11,19,23,35])
+# print("########## array ############")
+# print(arr)
+# myseries=pd.Series(arr,index=["Peter","Sam","Edgar","Mathew","Simond","Erric"])
+# print("############### Panda Series ########")
+# print(myseries)
+
+calories={"day1":420,"day2":380,"day3":390}
+myvar=pd.Series(calories)
+print(myvar)
+
+
+
+
